@@ -11,4 +11,16 @@
     <PackageReference Include="Stripe.net" Version="37.10.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repository\IRepository\" />
+    <Folder Include="Repository\" />
+    <Folder Include="Initializer\" />
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FoodREV.Models\FoodREV.Models.csproj" />
+    <ProjectReference Include="..\FoodREV.Utility\FoodREV.Utility.csproj" />
+  </ItemGroup>
+
 </Project>
