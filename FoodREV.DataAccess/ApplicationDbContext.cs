@@ -16,6 +16,6 @@ namespace FoodREV.DataAccess
         }
 
         public DbSet<Category> Category { get; set;}
-        public DbSet<Category> FoodTypeCategory { get; set;}
+        public DbSet<Category> FoodType { get; set;}
     }
 }
