@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using FoodREV.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,6 +12,10 @@ namespace FoodREV.DataAccess
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+
         }
+
+        public DbSet<Category> Category { get; set;}
+        public DbSet<Category> FoodTypeCategory { get; set;}
     }
 }
