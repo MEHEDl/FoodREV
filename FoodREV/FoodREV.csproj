@@ -22,4 +22,12 @@
     <ProjectReference Include="..\FoodREV.Models\FoodREV.Models.csproj" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <Folder Include="Pages\Admin\" />
+    <Folder Include="Pages\Customer\Home\" />
+    <Folder Include="Pages\Customer\Cart\" />
+    <Folder Include="wwwroot\img\" />
+  </ItemGroup>
+
 </Project>
