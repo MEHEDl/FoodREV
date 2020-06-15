@@ -8,7 +8,7 @@ namespace FoodREV.DataAccess.Data.Repository.IRepository
 {
     public interface IFoodTypeRepository : IRepository<FoodType>
     {
-        IEnumerable<SelectListItem> GetCategoryListDropDown();
+        IEnumerable<SelectListItem> GetFoodTypeDropDown();
 
         void Update(FoodType foodType);
     }

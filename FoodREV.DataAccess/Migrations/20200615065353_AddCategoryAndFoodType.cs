@@ -61,6 +61,19 @@ namespace FoodREV.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "FoodType",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FoodType", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -225,6 +238,9 @@ namespace FoodREV.DataAccess.Migrations
 
             migrationBuilder.DropTable(
                 name: "Category");
+
+            migrationBuilder.DropTable(
+                name: "FoodType");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

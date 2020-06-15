@@ -16,9 +16,9 @@ namespace FoodREV.DataAccess.Data.Repository
             _db = db;
         }
 
-        public IEnumerable<SelectListItem> GetCategoryListDropDown()
+        public IEnumerable<SelectListItem> GetFoodTypeDropDown()
         {
-            return _db.Category.Select(i => new SelectListItem()
+            return _db.FoodType.Select(i => new SelectListItem()
             {
                 Text = i.Name,
                 Value = i.Id.ToString()
@@ -27,7 +27,7 @@ namespace FoodREV.DataAccess.Data.Repository
 
         public void Update(FoodType foodType)
         {
-            var objFromDb = _db.Category.FirstOrDefault(s => s.Id == foodType.Id);
+            var objFromDb = _db.FoodType.FirstOrDefault(s => s.Id == foodType.Id);
             objFromDb.Name = foodType.Name;
 
             _db.SaveChanges();
