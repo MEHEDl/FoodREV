@@ -7,7 +7,7 @@ using FoodREV.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace FoodREV
+namespace FoodREV.Pages.Admin.Category
 {
     public class UpsertModel : PageModel
     {
@@ -19,10 +19,10 @@ namespace FoodREV
         }
 
         [BindProperty]
-        public Category CategoryObj { get; set; }
+        public Models.Category CategoryObj { get; set; }
         public IActionResult OnGet(int? id)
         {
-            CategoryObj = new Category();
+            CategoryObj = new Models.Category();
             if (id != null)
             {
                 CategoryObj = _unitOfWork.Category.GetFirstOrDefault(u => u.Id == id);
