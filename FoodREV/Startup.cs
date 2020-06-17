@@ -14,6 +14,8 @@ using Microsoft.Extensions.Hosting;
 using FoodREV.DataAccess;
 using FoodREV.DataAccess.Data.Repository.IRepository;
 using FoodREV.DataAccess.Data.Repository;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using FoodREV.Utility;
 
 namespace FoodREV
 {
@@ -32,8 +34,13 @@ namespace FoodREV
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddIdentity<IdentityUser,IdentityRole>()
+                .AddDefaultTokenProviders()
+                //.AddDefaultUI(UIFramewor.bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddSingleton<IEmailSender, EmailSender>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
