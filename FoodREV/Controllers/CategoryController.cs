@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FoodREV.DataAccess.Data.Repository.IRepository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,6 +11,7 @@ namespace FoodREV.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    
     public class CategoryController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
