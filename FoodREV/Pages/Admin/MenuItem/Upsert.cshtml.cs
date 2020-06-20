@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using FoodREV.DataAccess.Data.Repository.IRepository;
 using FoodREV.Models.ViewModels;
+using FoodREV.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 //using Microsoft.AspNetCore.Mvc.Rendering.SelectListItem;
 using Microsoft.AspNetCore.Mvc;
@@ -12,6 +14,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace FoodREV.Pages.Admin.MenuItem
 {
+    [Authorize(Roles = SD.ManagerRole)]
     public class MenuItemUpsertModel : PageModel
     {
         private readonly IUnitOfWork _unitOfWork;

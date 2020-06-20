@@ -4,11 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 //using FoodREV.Models;
 using FoodREV.DataAccess.Data.Repository.IRepository;
+using FoodREV.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace FoodREV
 {
+    [Authorize(Roles = SD.ManagerRole)]
     public class FoodTypeUpsertModel : PageModel
     {
         private readonly IUnitOfWork _unitOfWork;

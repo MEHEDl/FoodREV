@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace FoodREV
 {
+    [Authorize(Roles = SD.ManagerRole)]
     public class IndexModel : PageModel
     {
         public void OnGet()
