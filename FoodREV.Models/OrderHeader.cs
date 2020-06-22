@@ -23,7 +23,7 @@ namespace FoodREV.Models
         [Required]
         [NotMapped]
         public DateTime PickUpDate { get; set; }
-
+        public double OrderTotal { get; set; }
         public string Status { get; set; }
         public string PaymentStatus { get; set; }
         public string Comments { get; set; }
