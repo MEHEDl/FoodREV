@@ -1,4 +1,6 @@
 ﻿@using FoodREV.Utility
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,18 +30,39 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                         </li>
-                        @if (User.IsInRole(SD.ManagerRole)) { 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropDown" data-toggle="dropdown">
-                                Admin
-                            </a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" asp-page="/Admin/Category/Index">Category</a>
-                                <a class="dropdown-item" asp-page="/Admin/FoodType/Index">Food Type</a>
-                                <a class="dropdown-item" asp-page="/Admin/MenuItem/Index">Menu Items</a>
-                                <a class="dropdown-item" asp-page="/Admin/User/Index">User</a>
-                            </div>
-                        </li>
+                        @if (User.IsInRole(SD.ManagerRole))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropDown" data-toggle="dropdown">
+                                    Admin
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" asp-page="/Admin/Category/Index">Category</a>
+                                    <a class="dropdown-item" asp-page="/Admin/FoodType/Index">Food Type</a>
+                                    <a class="dropdown-item" asp-page="/Admin/MenuItem/Index">Menu Items</a>
+                                    <a class="dropdown-item" asp-page="/Admin/User/Index">User</a>
+                                </div>
+                            </li>
+                        }
+                        @if (HttpContextAccessor.HttpContext.Session.GetInt32(SD.ShoppingCart) != null)
+                        {
+
+                            <li>
+                                <a href="#" class="nav-link">
+                                    @{
+                                        var count = HttpContextAccessor.HttpContext.Session.GetInt32(SD.ShoppingCart);
+                                    }
+                                    <i class="fas fa-shopping-cart"></i>&nbsp; (@count)
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a href="#" class="nav-link">
+                                    <i class="fas fa-shopping-cart"></i>&nbsp; (0)
+                                </a>
+                            </li>
                         }
                     </ul>
                 </div>
