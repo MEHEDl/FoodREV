@@ -18,6 +18,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using FoodREV.Utility;
 using Microsoft.Extensions.Options;
 using Stripe;
+using Microsoft.AspNetCore.Authentication.Facebook;
 
 namespace FoodREV
 {
@@ -59,6 +60,11 @@ namespace FoodREV
 
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             //services.AddRazorPages().AddRazorRuntimeCompilation();
+            services.AddAuthentication().AddFacebook(facebookOptions =>
+            {
+                facebookOptions.AppId = "1198004347209891";
+                facebookOptions.AppSecret = "424ce1560906402e87c4b94c4b5dc6bf";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
