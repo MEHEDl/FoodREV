@@ -65,6 +65,11 @@ namespace FoodREV
                 facebookOptions.AppId = "1198004347209891";
                 facebookOptions.AppSecret = "424ce1560906402e87c4b94c4b5dc6bf";
             });
+            services.AddAuthentication().AddMicrosoftAccount(options =>
+            {
+                options.ClientId = "ec98b8fc-94f1-48e6-83c2-1363832ca84a";
+                options.ClientSecret = "~E-ti3Z535cAG7_evU2g5g~hWDff9-7K0K";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

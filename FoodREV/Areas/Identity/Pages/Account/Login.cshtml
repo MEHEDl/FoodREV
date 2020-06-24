@@ -5,7 +5,7 @@
     ViewData["Title"] = "Log in";
 }
 
-<h1>@ViewData["Title"]</h1>
+<h1 class="text-success">@ViewData["Title"]</h1>
 <div class="row">
     <div class="col-md-4">
         <section>
@@ -50,32 +50,27 @@
     </div>
     <div class="col-md-6 col-md-offset-2">
         <section>
-            <h4>Use another service to log in.</h4>
-            <hr />
-            @{
-                if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                {
-                    <div>
-                        <p>
-                            There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
-                            for details on setting up this ASP.NET application to support logging in via external services.
-                        </p>
-                    </div>
-                }
-                else
-                {
-                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                        <div>
-                            <p>
-                                @foreach (var provider in Model.ExternalLogins)
+            <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                <h1 class="h3 mb-3 font-weight-normal text-success" style="text-align:center">Alternate FoodREV Login</h1>
+                <div class="social-login pb-0 mb-0">
+                    @if (Model.ExternalLogins?.Count > 0)
+                    {
+            @foreach (var provider in Model.ExternalLogins)
+            {
+
+            @if (provider.Name.ToLower().Contains("facebook"))
+            {
+            <button type="submit" class="btn btn-block facebook-btn form-control" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account"><i class="fab fa-facebook-square"></i> Sign in with @provider.DisplayName</button> }
+                                else
                                 {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                }
-                            </p>
-                        </div>
-                    </form>
-                }
-            }
+            @if (provider.Name.ToLower().Contains("micro"))
+            {
+            <button type="submit" class="btn btn-block microsoft-btn form-control" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account"><i class="fab fa-windows"></i> Sign in with @provider.DisplayName</button> }
+                                    else
+                                    {
+            <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>}}                }}
+                </div>
+            </form>
         </section>
     </div>
 </div>
