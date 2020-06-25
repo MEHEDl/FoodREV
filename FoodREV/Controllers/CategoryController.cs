@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FoodREV.DataAccess.Data.Repository.IRepository;
+using FoodREV.Models;
 using FoodREV.Utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -23,7 +24,10 @@ namespace FoodREV.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Json(new { data = _unitOfWork.Category.GetAll() });
+            //Using Store Procedure
+            //return Json(new { data = _unitOfWork.SP_Call.ReturnList<Category>("usp_GetAllCategory", null) });
+            //uding Repository
+           return Json(new { data = _unitOfWork.Category.GetAll() });
         }
 
         [HttpDelete("{id}")]
